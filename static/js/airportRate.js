@@ -11,7 +11,7 @@ const getDest = async()=> {
 
     let domain = window.location.hostname;
 
-    const destUrl = `http://${domain}:8000/users/airportDest?dest=${fromCity.value}`;
+    const destUrl = `https://${domain}/users/airportDest?dest=${fromCity.value}`;
 
     console.log(domain);
 
