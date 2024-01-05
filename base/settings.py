@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t^v$ow)l3mhl@8lrb(a2rn(ja&e(k+i5xtu%2sx!8^%a$7q(79
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'eurocabs-863b86618114.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'eurocabs-863b86618114.herokuapp.com', 'eurocabs.uk']
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
