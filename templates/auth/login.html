@@ -12,7 +12,7 @@
   <div class="navbar">
     <img class="limg" src="{%static 'img/euro.png' %}" alt="">
     <div class="nav-items">
-      <p>Admin Login</p>
+      
       {% if request.user.is_authenticated %}
       <a href="{% url 'userLogout' %}"><button class="logout">Logout</button></a>{%endif%}
     </div>

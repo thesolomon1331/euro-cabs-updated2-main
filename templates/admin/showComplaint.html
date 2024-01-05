@@ -151,9 +151,9 @@
         document.getElementById('res').style.display = 'none'
         document.getElementById('spin1').style.display = 'block'
 
-        const host = 'http://127.0.0.1:8000/'
+        const host = window.location.hostname
         let complaintID = '{{data.id}}'
-        const tokenUrl = `${host}dashboard/resolved/${complaintID}/`;
+        const tokenUrl = `https://${host}/dashboard/resolved/${complaintID}/`;
 
 
         const response = await fetch(tokenUrl)
@@ -175,9 +175,9 @@
         document.getElementById('tok').style.display = 'none'
         document.getElementById('spin').style.display = 'block'
 
-        const host = 'http://127.0.0.1:8000/'
+        const host = window.location.hostname
         let complaintID = '{{data.id}}'
-        const tokenUrl = `${host}dashboard/${complaintID}/tokenAccepted/`;
+        const tokenUrl = `https://${host}/dashboard/${complaintID}/tokenAccepted/`;
 
 
         const response = await fetch(tokenUrl)
