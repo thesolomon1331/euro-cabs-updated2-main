@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply: {{com.id}}</title>
+</head>
+<body>
+    <div class="container">
+        <p><b>Hi.. {{com.userName}}</b>
+        <br>
+        Complaint ID: {{com.ComplintId}}
+    
+        <br><br>
+        Your Reply <br><br>
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <textarea name="reply-message" id="" cols="30" rows="10"></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

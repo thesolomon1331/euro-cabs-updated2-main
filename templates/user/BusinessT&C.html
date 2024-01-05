@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/Business.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Euro Cabs</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
+</head>
+
+<body>
+
+    <div class="navigationbar">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" target="_self" class="site-name">
+                <img src="{% static 'assets/images/eurocabs-logo.png' %}" alt="">
+            </a>
+            <button type="button" class="btn-bars"> <span><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="navbar-collapse">
+                <span class="btn-close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://eb3.autocab.net/#/36364" class="nav-link">Book A Cab</a>
+                    </li>
+                    <!--  <li class="nav-item">
+                        <a href="index.html#about-container" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="#" class="nav-link">Earn with Euro Cabs</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a href="corporate.html" class="nav-link">Corporate Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#faq-section" class="nav-link">FAQs</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#table-container" class="nav-link">Airport Rates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#services-section" class="nav-link">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#faq-section" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#customer-complaints" class="nav-link">Complaints Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#about-container" class="nav-link">About Us</a>
+                    </li>
+                </ul>
+
+
+                <div class="nav-social-icon">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    &nbsp;
+
+    <div id="business-cards-container">
+        <div class="business-card-container">
+            <h1>business terms and conditions.</h1>
+            <div class="content">
+                <h2>1. GENERAL</h2>
+                <p>a. The terms and conditions set out herein shall apply between the Company (Eurocabs) and the party
+                    ("the Customer") and shall apply to the provision of any and all carriage, courier or delivery
+                    services ("the Services") undertaken by the Company for the Customer during the continuance of this
+                    Agreement and any and all other terms, warranties and/or conditions implied by statute and/or common
+                    law and hereby expressly excluded to the fullest extent permitted by law.
+                </p>
+                
+                <h2>2. CHARGES</h2>
+                <p>a. The charges payable by the Customer for the Services ("the Courier Charges") shall be at the rate
+                    specified in the Company's schedule of charges as in force.
+                    b. Cancellation Charges. All cancellations prior to the booking time may be subject to a charge
+                    either in full or part costing depending on the time of the cancellation. All cancellations outside
+                    of the Letchworth, Baldock or Hitchin area may be subject to a higher charge. This includes if the
+                    cancellation is prior to the booking or if the booking has been allocated to the specified vehicle.
+                </p>
+                
+                <h2>3. ALTERATIONS TO THE TERMS AND CONDITIONS</h2>
+                <p>a. The Company reserves the right to alter or vary these terms and conditions at its absolute
+                    discretion upon giving reasonable notice to the Customer and without prejudice to the generality or
+                    the aforesaid the Company reserves the right to change the Courier Charges. No representations made
+                    or variations in or additions to these terms and conditions or warranty given by any person acting
+                    or purporting to act on behalf of the Company shall have any force or effect whatsoever unless
+                    confirmed in writing by an authorised officer of the Company.
+                </p>
+                
+                <h2>4. PAYMENT FOR SERVICES</h2>
+                <p>a. It is a condition of this agreement that invoices shall be paid in full within 28 days of issue
+                    thereof. Should any invoice not be paid within 28 days any outstanding invoices shall immediately
+                    become due and payable.
+                    b. Without prejudice to the Company's rights hereunder all monies due to the company in respect of
+                    provision of the Services which are not paid by the due date for payment shall bear interest on the
+                    balance of such monies due from time to time at the rate of 3% per month company reserve the right
+                    to enforce this along with the late payment charge until payment is received by the Company in
+                    respect thereof.
+                    c. The Customer shall not be entitled for any reason to withhold payment of monies due to the
+                    Company and in particular shall not be entitled to do so in circumstances where the Customer is in
+                    dispute with the Company and/or claims money or compensation from the Company in respect of the
+                    Services.
+                </p>
+                
+                <h2>5. INVOICE LIMIT</h2>
+                <p>a. At any time of opening the Customers account with the Company, the Company may set a limit on the
+                    total amount which may be outstanding as unpaid on such account at any one time. The company may in
+                    its discretion refuse to provide the Services in the event of this limit being exceeded.
+                </p>
+                
+                <h2>6. SECURITY ACCOUNT PASSWORD</h2>
+                <p>a. The customer will be issued with a security account password on request which must be quoted on
+                    all bookings. Notwithstanding the aforesaid, the Company does not accept any responsibility
+                    whatsoever when security account passwords are used by unauthorised personnel and/or for
+                    unauthorised purposes.
+                </p>
+                
+                <h2>7. LIMITATIONS AND EXCLUSIONS</h2>
+                <p>
+                    a. The Company shall not be responsible for the loss or damage during the carriage of the
+                    following:-
+                    i. money or securities (whether cash, cheques, bankers drafts, bonds, share certificates or in any
+                    other form), antiques, precious metals, furs, or jewellery (in any form whatsoever) of whatever
+                    amount or value.
+                    ii. any goods or property (of whatsoever nature) of an intrinsic value of more than £100
+                    iii. any goods or property of a hazardous, dangerous, inflammable, explosive or noxious nature, or
+                    are illegal to possess under existing English Law, and/or
+                    iv. any goods or property (of whatsoever nature) which may deteriorate in transit. UNLESS the
+                    Customer has prior to the commencement of the Service in respect of such goods or property expressly
+                    notified the Company as to the nature and value of the same and a Director of the Company has
+                    expressly agreed in writing that the Company shall carry and deliver the same on such terms and
+                    conditions as the Company may reasonably require AND in the event that the Company undertakes the
+                    Service in respect of such goods or property without first having expressly agreed to do so as
+                    aforesaid, the Company shall have no liability whatsoever for loss or damage to the same however
+                    arising.
+                    b. The Company shall be entitled to destroy or dispose of goods or property referred to in clauses
+                    8.1.3 and 8.1.4 in such manner as the Company thinks fit if in the Company's opinion it is proper to
+                    do so and the Company shall account to the Customer for money it receives (if any) on such
+                    destruction or disposal in excess of the costs incurred by the Company in so disposing of or
+                    destroying the goods or property.
+                    c. Without prejudice to the provisions of clause 8.1 the Company shall not in any event be liable
+                    directly or indirectly for:-
+                    i. consequential loss (whether for loss or profit or otherwise) and/or
+                    ii. loss, damage and/or breakage to china, glass ceramics or other breakables whether arising from
+                    the acts, omissions or negligence of the Company and/or its employees and/or agents or arising
+                    otherwise howsoever.
+                    d. Without prejudice to the generality of clauses 8.1 and 8.3 in particular the Company shall not be
+                    liable for any loss and/or damage arising directly or indirectly from:-
+                    i. breakdown, accident, adverse weather conditions.
+                    ii. any act or omission on the part of the Customer.
+                    iii. any clause, act or circumstance beyond the control of the Company (including, without
+                    limitation, any strike, (official or not) lock-out or other form of industrial action or labour
+                    dispute, governmental regulations, legal restrictions, embargoes, fire, flood, Act of God, any
+                    consequence of riot, war, invasion, act of foreign enemy, hostilities (whether war be declared or
+                    not) civil war, acts of terrorism, rebellion, military or usurped power, confiscation, requisition
+                    or destruction of or damage to property by or upon the order of or in the name of any Government or
+                    public local authority.)
+                    iv. inadequate or inappropriate packaging of goods, or incorrect or inadequate labelling or
+                    instructions received from the customer and/or
+                    v. the Company being prevented or hindered from delivering the goods or property
+                    e. Without prejudice to the generality and effect of the foregoing provisions of this clause 8 the
+                    liability of the Company for each delivery or courier service undertaken by the Company howsoever
+                    arising and whether direct or indirect and including but not limited to liability arising from the
+                    acts, omissions or negligence of the Company and/or its employees and/or agents or arising otherwise
+                    howsoever shall in any event be limited to the lesser of:-
+                    i. £150 or
+                    ii. the intrinsic value of the goods or property comprised in such delivery or courier service
+                    f. The provision of clauses 8.3, 8.4, 8.5 and 10.1 apply to liability for loss or damage to goods or
+                    property and do not apply to liability for death or personal injury.
+                </p>
+                
+                <h2>8. DELIVERY</h2>
+                <p>
+                    a. The Company shall use reasonable endeavors to deliver the Customer and the Customer's goods or
+                    property on time, however time for delivery shall not in any event be of the essence and the Company
+                    makes no warranty that the Customer or Customer's goods or property shall be delivered within the
+                    Customers stipulated time period (if any) and/or within any time period stated by the Company and
+                    will not be liable for any consequential loss from this failure unless expressly agreed in writing
+                    by a Director of a Company.
+                    b. In the event that the Company is unable for whatever reason to deliver the Customer or the
+                    Customer's goods or property then the Company reserves the right to charge the Customer for any and
+                    all costs and expenses incurred in doing so and/or for any costs or storage of the goods or
+                    property.
+                </p>
+                
+                <h2>9. LIEN</h2>
+                <p>
+                    a. Without prejudice to the Company's rights hereunder or arising otherwise howsoever, the Company
+                    reserves the right to exercise a lien over the Customer's goods and/or property pending payment in
+                    full or outstanding invoices.
+                </p>
+                
+                <h2>10. TERMINATION</h2>
+                <p>
+                    a. This Agreement may be terminated by either party by one months notice in writing to the other.
+                    b. In the event of the Customer being in breach of any of the terms and/or conditions of this
+                    Agreement the Company shall have the right (without prejudice to any other rights it may have) to
+                    terminate this Agreement or suspend provision of the Services, or suspend the Customer's account
+                    facility, forthwith and without notice.
+                </p>
+                
+                <h2>11. RESOLUTION OF DISPUTES AND GOVERNING LAW</h2>
+                <p>
+                    a. The parties hereto submit to the exclusive jurisdiction of the Courts of England and Wales.
+
+                </p>
+                
+                <h2>12. ENTIRE AGREEMENT</h2>
+                <p>a. This Agreement contains all the terms agreed by the parties regarding the subject matter hereof
+                    and supersedes any prior agreements, understandings or arrangements between them, whether oral or in
+                    writing, and no representation undertaking or promise shall be taken to have been given or be
+                    implied from anything said or written prior to this Agreement except as expressly set out in this
+                    Agreement.
+                </p>
+                
+                <h2>13. NOTICES</h2>
+                <p>
+                    a. Any notice to be given by any party to the other under this Agreement shall be sufficiently
+                    served if left at, or sent by prepaid registered post or recorded delivery service or telefax or
+                    telex to the party to be served at. Its address as set out in this Agreement or such other address
+                    as it may notify for such purpose and shall be deemed to have been served when so left or sent by
+                    telefax or telex or in the case of posting 24 hours after the same was posted. In proving service by
+                    post it shall only be necessary to prove that the communication was contained in an envelope which
+                    was duly posted in accordance with this clause.
+
+                </p>
+                
+                <h2>14. WAIVER</h2>
+                <p>
+                    a. No forbearance, indulgence or failure by the Company to enforce or to exercise, at any time or
+                    for any period of time, any term of or any right arising pursuant to this Agreement shall
+                    constitute, and shall not be construed as, a waiver of such term or right and shall in no way affect
+                    the Company's right later to enforce or exercise it.
+
+                </p>
+                
+                <h2>15. SEVERABILITY</h2>
+                <p>a. The invalidity or unenforceability of any term of or any right arising pursuant to this Agreement
+                    shall not in any way affect the remaining terms or rights.
+                </p>
+                
+                <h2>16. PROTECTING YOUR SECURITY</h2>
+                <p>
+                    a. You agree that we may use Personal information provided by you in order to conduct appropriate
+                    anti fraud checks. Personal Information that you provide may be disclosed to a credit reference or
+                    fraud prevention agency, which may keep a record of that information.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- footer  -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Airports</a></li>
+                    <li><a href="#">Prices</a></li>
+                    <li><a href="#">App</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="https://eb3.autocab.net/#/36364">Rides</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Airports</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Business</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Drive</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">School Transport</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">SENS Transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="{% url 'businessTerms' %}">Business Terms & Conditions</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'websiteTerms' %}">Website Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on</h4>
+                <ul class="social-icons">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Eurocabs.uk 2023 All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Scroll trigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- JS  -->
+    <script src="{% static 'assets/js/Business.js' %}"></script>
+</body>

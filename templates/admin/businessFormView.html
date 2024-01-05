@@ -1,0 +1,31 @@
+{% extends 'admin/dashboard.html' %}
+{% load static %}
+
+{% block active %}{%endblock%}
+{% block business %}active{%endblock%}
+
+{% block content %}
+<style>
+    p {
+        font-size: 16px;
+        margin: 20px 0px;
+    }
+</style>
+<br>
+<h4 >Business Query</h4>
+   <div class="container my-3 shadow p-4">
+    <p><b>Company Name: </b>{{data.Company_Name}}</p>
+    <p><b>Nature Of Business: </b>{{data.Nature_Of_Business}}</p>
+    <p><b>Website Address: </b><a href="{{data.Website_Address}}">{{data.Website_Address}}</a></p>
+    <p><b>Year Company Was Established: </b>{{data.Year_Company_Est}}</p>
+    <p><b>Contact Name: </b>{{data.contactName}}</p>
+    <p><b>Job Title: </b>{{data.Job_Title}}</p>
+    <p><b>Department: </b>{{data.Department}}</p>
+    <p><b>TelePhone Number: </b>{{data.TelePhone_Number}}</p>
+    <p><b>Email Address: </b>{{data.Email_Address}}</p>
+    <p><b>Monthly Credit Amount: </b>{{data.Monthly_Credit_Amount}}</p>
+    <p><b>Monthly_Spend: </b>{{data.Monthly_Spend}}</p>
+    <p><b>Authorised By: </b>{{data.Authorised_By}}</p>
+    <p><b>Date And Time: </b>{{data.timeStamp}}</p>
+   </div>
+{% endblock %}

@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/driver.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Euro Cabs</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
+</head>
+
+<body>
+
+    <div class="navigationbar">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" target="_self" class="site-name">
+                <img src="{% static 'assets/images/eurocabs-logo.png' %}" alt="">
+            </a>
+            <button type="button" class="btn-bars"> <span><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="navbar-collapse">
+                <span class="btn-close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://eb3.autocab.net/#/36364" class="nav-link">Book A Cab</a>
+                    </li>
+                    <!--  <li class="nav-item">
+                        <a href="index.html#about-container" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="#" class="nav-link">Earn with Euro Cabs</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a href="corporate.html" class="nav-link">Corporate Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#faq-section" class="nav-link">FAQs</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#table-container" class="nav-link">Airport Rates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#services-section" class="nav-link">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#faq-section" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#customer-complaints" class="nav-link">Complaints Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#about-container" class="nav-link">About Us</a>
+                    </li>
+                </ul>
+
+
+                <div class="nav-social-icon">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    &nbsp;
+
+    <div id="driver-login">
+        <div class="form-background"></div>
+        <div class="form-container">
+            <div class="left">
+                <h3>Make money driving with Eurocabs in The Letchworth.</h3>
+                <p>Become a Eurocabs driver, set your schedule and earn money by driving!</p>
+            </div>
+            <div class="right">
+                {% block otp %}
+                <form method="POST" class="driver-form" >
+                    {% csrf_token %}
+                    <h2>Become a Driver</h2>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile number:</label>
+                        <div class="phone-input">
+                            <input type="tel" id="phone-country-code" name="phone-country-code" value="+91" required>
+                            <input type="tel" id="phone-number" name="phone-number" placeholder="Mobile number"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password1">Password</label>
+                        <input style="width: calc(100% - 12px);
+                        padding: 8px;
+                        border-radius: 4px;
+                        border: 1px solid #ccc;
+                        margin-top: 5px;" type="password" id="password1" name="password1" placeholder="Enter Password" required>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="location">Location:</label>
+                        <select id="location" name="location" required>
+                            <option value="" disabled selected>Select your city</option>
+                            <option value="London">London</option>
+                            <option value="New York">New York</option>
+                            <option value="Tokyo">Tokyo</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Sydney">Sydney</option>
+                        </select>
+                    </div> -->
+                    <div class="form-group-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">By signing up, you agree to our Terms and Conditions and confirm that you
+                            have read and understood the Privacy Policy for Drivers applicable for your country of
+                            operation.</label>
+                    </div>
+                    <button type="submit" class="signup-driver-btn">Sign up as a Driver</button>
+                    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+                    <p>Already have an account? <a href="{% url 'userLogin' %}">Log in</a></p>
+                    <p>If you have multiple vehicles and drivers, sign up as a Fleet owner.</p>
+                </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    &nbsp;
+
+    <!-- footer  -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Airports</a></li>
+                    <li><a href="#">Prices</a></li>
+                    <li><a href="#">App</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="https://eb3.autocab.net/#/36364">Rides</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Airports</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Business</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Drive</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">School Transport</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">SENS Transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="{% url 'businessTerms' %}">Business Terms & Conditions</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'websiteTerms' %}">Website Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on</h4>
+                <ul class="social-icons">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Eurocabs.uk 2023 All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Scroll trigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- JS  -->
+    <script>
+        const showBtn = document.querySelector(".btn-bars"),
+            closeBtn = document.querySelector(".btn-close"),
+            navMenu = document.querySelector(".navbar-collapse");
+        showBtn.addEventListener("click", () => {
+            navMenu.classList.add("showMenu");
+        });
+        closeBtn.addEventListener("click", () => {
+            navMenu.classList.remove("showMenu");
+        });
+    </script>
+</body>

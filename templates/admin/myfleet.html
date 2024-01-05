@@ -1,0 +1,99 @@
+{% extends 'admin/dashboard.html' %}
+{% load static %}
+
+{% block active %}{%endblock%}
+{% block fleet %} active {%endblock%}
+
+{% block content %}
+
+<style>
+    /* Add these styles to your CSS file or style block in your HTML */
+.messages {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+/* Style for error messages */
+.messages .error {
+    background-color: #ff6666;
+    color: #fff;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Style for success messages */
+.messages .success {
+    background-color: #66ff66;
+    color: #000;
+    border: 1px solid #00cc00;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Style for warning messages */
+.messages .warning {
+    background-color: #ffff66;
+    color: #000;
+    border: 1px solid #cccc00;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+</style>
+    <div class="d-flex justify-content-between mx-5 my-3">
+        <div><h3>Add a Vehicle to your <span class="text-primary">Fleet</span></h3></div>
+        <div>
+            <a href="{% url 'managefleet' %}?q=all"><button class="btn btn-warning">Manage</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-dark">Submit</button>
+        </form> -->
+
+
+        <form action="" class="form-group shadow p-4" method="POST">
+            {% csrf_token %}
+            <label for="plate-number">Plate Number</label>
+            <input type="text" name="plate-number" id="plate-number" class="form-control mb-3">
+
+            <label for="make">Make or Model</label>
+            <input type="text" name="make" id="make" class="form-control mb-3">
+
+            <label for="PH/HC">PH/HC</label>
+            <input type="text" name="phhc" id="PH/HC" class="form-control mb-3">
+
+            <label for="number-plate">Number Plate</label>
+            <input type="text" name="number-plate" id="number-plate" class="form-control mb-3">
+
+            <label for="color">Color</label>
+            <input type="text" name="color" id="color" class="form-control mb-3">
+
+            <label for="ped">Plate Expiry Date</label>
+            <input type="date" name="ped" id="ped" class="form-control mb-3" format="yyyy/MM/dd">
+
+            <label for="med">MOT Expiry Date</label>
+            <input type="date" name="med" id="med" class="form-control mb-3">
+
+            <button class="btn btn-dark">Submit</button>
+           
+        </form>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

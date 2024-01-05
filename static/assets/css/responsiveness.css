@@ -1,0 +1,534 @@
+@media (max-width: 1024px) {
+  #navbar {
+    height: 90px;
+    padding: 0 7vw;
+  }
+  #nav-elements a {
+    display: none;
+    font-size: 1.5vw;
+  }
+
+  .nav-social-icon i {
+    display: block;
+    /* font-size: 2.5vw; */
+    font-weight: 600;
+  }
+
+  #content {
+    height: calc(100% - 90px);
+    flex-direction: column;
+  }
+
+  .left {
+    width: 100%;
+    height: 50%;
+    padding: 9vw 10vw;
+    text-align: center;
+  }
+
+  .left h3 {
+    line-height: 64px;
+    font-size: 45px;
+    font-weight: 700;
+  }
+
+  .left p {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 63px;
+  }
+
+  .modal {
+    z-index: 999;
+  }
+
+  .modal-content {
+    width: 100%;
+  }
+
+  .main-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .header-links a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #333;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 20px;
+    /* margin: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .right {
+    width: 100%;
+    height: 100%;
+  }
+
+  .right img {
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+
+  #services-section {
+    min-height: 70%;
+    width: 90%;
+    margin: auto;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+  }
+
+  /* table */
+  /* #table-container {
+    height: 100%;
+    width: 100%;
+    padding: 4vw 4vw;
+  }
+
+  #table-container h1 {
+    font-size: 22px;
+    padding: 18px;
+  }
+
+  .content-table {
+    font-size: 0.8em;
+    height: 80%;
+    width: 95%;
+  }
+
+  .content-table thead tr {
+    font-size: 0.8em;
+  }
+
+  .content-table th,
+  .content-table td {
+    padding: 10px;
+  } */
+
+  #table-container {
+    width: 20%;
+    padding: 2vw;
+    margin: 20px auto;
+  }
+
+  .airport-booking {
+    width: 30%;
+  }
+
+  /* about section */
+  #about-container {
+    height: 100%;
+    width: 100%;
+    padding: 7vw 2vw;
+  }
+
+  .para {
+    width: 95%;
+    line-height: 35px;
+    padding: 12px;
+    font-size: 20px;
+  }
+
+  #map {
+    width: 95%;
+    height: 90%;
+    padding: 12px;
+  }
+
+  /* faq-section */
+  .container {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  .accordion .accordion-item {
+    margin: 8px 0;
+  }
+
+  .accordion button .icon {
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+  }
+
+  .accordion .accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+  }
+
+  /* fares */
+  .fare-container {
+    width: 90%;
+  }
+
+  /* Download section */
+
+  #download-container {
+    min-height: 75vh;
+    padding: 0vw 0vw 6vw 0vw;
+  }
+
+  #download-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 75vh;
+    padding: 3vw;
+  }
+
+  .left-text {
+    width: 100%;
+  }
+
+  .left-text h1 {
+    text-align: center;
+  }
+
+  .left-text h2 {
+    line-height: 45px;
+  }
+
+  .right-download-img {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* contact form */
+
+  .form {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+
+  .contact-info:before {
+    bottom: initial;
+    top: -75px;
+    right: 65px;
+    transform: scale(0.95);
+  }
+
+  .contact-form:before {
+    top: -13px;
+    left: initial;
+    right: 70px;
+  }
+
+  .square {
+    transform: translate(140%, 43%);
+    height: 350px;
+  }
+
+  .big-circle {
+    bottom: 75%;
+    transform: scale(0.9) translate(-40%, 30%);
+    right: 50%;
+  }
+
+  .text {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .social-media {
+    padding: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  #navbar {
+    height: 90px;
+    padding: 0 7vw;
+  }
+
+  .nav-social-icon i {
+    display: block;
+    font-size: 4.5vw;
+    font-weight: 600;
+  }
+
+  .left {
+    width: 100%;
+    height: 70%;
+    padding: 7vw 4vw;
+    text-align: center;
+  }
+
+  .left h3 {
+    line-height: 43px;
+    font-size: 27px;
+    font-weight: 700;
+  }
+
+  .left p {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .right img {
+    padding: 7vw 0vw;
+  }
+
+  .main-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .header-links a {
+    display: block;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .modal {
+    z-index: 999;
+  }
+
+  .modal-content {
+    width: 100%;
+  }
+
+  #booking-btn {
+    display: block;
+  }
+
+  .right {
+    width: 100%;
+    height: 50%;
+  }
+
+  .right img {
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+
+  #services-section {
+    min-height: 100%;
+    min-width: 100%;
+    text-align: center;
+    padding: 8vw 7vw;
+  }
+
+  .services-grid {
+    padding: 12px;
+    grid-template-columns: 1fr;
+    width: auto;
+  }
+
+  .service-item p {
+    padding: 9px;
+  }
+
+  /* table container css */
+
+  #table-container {
+    /* height: 60%;
+    width: 100%;
+    padding: 9vw 4vw 4vw; */
+    height: 70%;
+    width: 100%;
+    margin: auto;
+    padding-top: 12vw;
+  }
+
+  #table-container h1 {
+    font-size: 28px;
+  }
+
+  #table-container h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  #table-container ul {
+    border: 3px solid #009879;
+    width: 90%;
+    padding: 2vw;
+    margin: 20px auto;
+  }
+
+  /* 
+  #table-container {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+  }
+
+  .content-table {
+    height: 75%;
+    width: 95%;
+  }
+
+  .airport-booking {
+    width: 50%;
+  } */
+
+  /* about section */
+  #about-container {
+    text-align: justify;
+  }
+
+  .airport-booking {
+    width: 50%;
+    margin-top: 22px;
+  }
+
+  .location h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .input-field i {
+    padding: 8px 4px 2px 2px;
+    /* margin-top: 3px; */
+  }
+
+  .para {
+    width: 90%;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 7vw 2vw;
+  }
+
+  #map {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* fare section */
+  .fare-container {
+    width: 90%;
+  }
+  .fare-details,
+  .additional-charges {
+    padding: 10px;
+  }
+  .book-now-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* faq section */
+  .container {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  #faq-heading {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  /* fare details */
+  .fare-details {
+    padding: 13px;
+  }
+  .fare-details li {
+    list-style-type: disclosure-closed;
+    padding: 5px;
+  }
+
+  .accordion button {
+    font-size: 12px;
+    margin: 0px;
+    font-weight: 500;
+    line-height: 28px;
+  }
+
+  .accordion-title {
+    font-size: 12px;
+  }
+
+  .accordion .accordion-content p {
+    font-size: 12px;
+    text-align: justify;
+    font-weight: 500;
+  }
+
+  .left-text {
+    width: 100%;
+  }
+
+  .left-text h1 {
+    /* text-align: center; */
+    font-size: 25px;
+    line-height: 40px;
+  }
+
+  .left-text h2 {
+    font-size: 20px;
+    line-height: 38px;
+    font-weight: 600;
+  }
+
+  /* complaints-form */
+
+  .complaints-form {
+    width: 100%;
+  }
+
+  .customer-complaints h2 {
+    font-size: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    float: left;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  input[type="text"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  select {
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+    resize: vertical;
+  }
+
+  .complaint-btn {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    background: #000000;
+    color: #ffffff;
+    width: 50%;
+    margin: 20px;
+    padding: 3vw;
+  }
+}

@@ -1,0 +1,254 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/websiteterms.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Euro Cabs</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
+</head>
+
+<body>
+
+    <div class="navigationbar">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" target="_self" class="site-name">
+                <img src="{% static 'assets/images/eurocabs-logo.png' %}" alt="">
+            </a>
+            <button type="button" class="btn-bars"> <span><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="navbar-collapse">
+                <span class="btn-close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://eb3.autocab.net/#/36364" class="nav-link">Book A Cab</a>
+                    </li>
+                    <!--  <li class="nav-item">
+                        <a href="index.html#about-container" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="#" class="nav-link">Earn with Euro Cabs</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a href="corporate.html" class="nav-link">Corporate Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#faq-section" class="nav-link">FAQs</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#table-container" class="nav-link">Airport Rates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#services-section" class="nav-link">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#faq-section" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#customer-complaints" class="nav-link">Complaints Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#about-container" class="nav-link">About Us</a>
+                    </li>
+                </ul>
+
+
+                <div class="nav-social-icon">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    &nbsp;
+
+    <div id="business-cards-container">
+        <div class="business-card-container">
+            <h1>website terms of use.</h1>
+            <div class="content">
+
+                <p>We are committed to safeguarding the privacy of our website visitors; this policy sets out how we
+                    will treat your personal information. Our website uses cookies. By using our website and agreeing to
+                    this policy, you consent to our use of cookies in accordance with the terms of this policy.</p>
+
+                <h2>1.What information do we collect?</h2>
+                <p>We may collect, store and use the following kinds of personal information:
+                    (a) information about your computer and about your visits to and use of this website (including your
+                    IP address, geographical location, browser type and version, operating system, referral source,
+                    length of visit, page views, website navigation);
+                    (b) any other information that you choose to send to us;
+                </p>
+
+                <h2>2. Cookies</h2>
+                <p>A cookie consists of information sent by a web server to a web browser, and stored by the browser.
+                    The information is then sent back to the server each time the browser requests a page from the
+                    server. This enables the web server to identify and track the web browser. We may use both “session”
+                    cookies and “persistent” cookies on the website. We will use the session cookies to: keep track of
+                    you whilst you navigate the website; and we will use the persistent cookies to: enable our website
+                    to recognise you when you visit. Session cookies will be deleted from your computer when you close
+                    your browser. Persistent cookies will remain stored on your computer until deleted, or until they
+                    reach a specified expiry date. We use Google Analytics to analyse the use of this website. Google
+                    Analytics generates statistical and other information about website use by means of cookies, which
+                    are stored on users’ computers. The information generated relating to our website is used to create
+                    reports about the use of the website. Google will store this information. Google’s privacy policy is
+                    available at: <a href="{% url 'privacyPolicy' %}" class="hyper-link">Privacy And Policy</a> Most browsers allow you to reject
+                    all
+                    cookies, whilst some browsers allow you to reject just third party cookies. For example, in Internet
+                    Explorer you can refuse all cookies by clicking “Tools”, “Internet Options”, “Privacy”, and
+                    selecting “Block all cookies” using the sliding selector. Blocking all cookies will, however, have a
+                    negative impact upon the usability of many websites.
+                </p>
+
+                <h2>3. Using your personal information</h2>
+                <p>Personal information submitted to us via this website will be used for the purposes specified in this
+                    privacy policy or in relevant parts of the website. We may use your personal information to:
+                    (a) send statements and invoices to you, and collect payments from you;
+                    (b) send you general (non-marketing) commercial communications;
+                    (c) send you email notifications which you have specifically requested; We will not without your
+                    express consent provide your personal information to any third parties for the purpose of direct
+                    marketing.
+                </p>
+
+                <h2>4. Disclosures</h2>
+                <p>We may disclose information about you to any of our employees or subcontractors insofar as reasonably
+                    necessary for the purposes as set out in this privacy policy. In addition, we may disclose your
+                    personal information:
+                    (a) to the extent that we are required to do so by law;
+                    (b) in connection with any legal proceedings or prospective legal proceedings;
+                    (c) in order to establish, exercise or defend our legal rights (including providing information to
+                    others for the purposes of fraud prevention and reducing credit risk); Except as provided in this
+                    privacy policy, we will not provide your information to third parties.
+
+                <h2>5. Security of your personal information</h2>
+                <p>a.We will take reasonable technical and organisational precautions to prevent the loss, misuse or
+                    alteration of your personal information. Of course, data transmission over the internet is
+                    inherently insecure, and we cannot guarantee the security of data sent over the internet.</p>
+
+                <h2>6. Policy amendments </h2>
+                <p>a. We may update this privacy policy from time-to-time by posting a new version on our website. You
+                    should check this page occasionally to ensure you are happy with any changes. We may also notify you
+                    of changes to our privacy policy by email.
+                </p>
+
+                <h2>7.Your rights</h2>
+                <p>
+                    You may instruct us to provide you with any personal information we hold about you. Provision of
+                    such information will be subject to:
+                    (a) the payment of a fee (currently fixed at £10.00); and
+                    (b) the supply of appropriate evidence of your identity (for this purpose, we will usually accept a
+                    photocopy of your passport certified by a solicitor or bank plus an original copy of a utility bill
+                    showing your current address). We may withhold such personal information to the extent permitted by
+                    law. You may instruct us not to process your personal information for marketing purposes by email at
+                    any time. In practice, you will usually either expressly agree in advance to our use of your
+                    personal information for marketing purposes, or we will provide you with an opportunity to opt-out
+                    of the use of your personal information for marketing purposes.
+                </p>
+
+                <h2>8. Third party websites</h2>
+                <p>
+                    a.The website contains links to other websites. We are not responsible for the privacy policies or
+                    practices of third party websites.
+                </p>
+
+                <h2>9. Updating information</h2>
+                <p>
+                    a. Please let us know if the personal information, which we hold, about you needs to be corrected or
+                    updated.
+                </p>
+
+                <h2>10. Contact</h2>
+                <p>
+                    a. If you have any questions about this privacy policy or our treatment of your personal
+                    information, please write to us by email
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer  -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Airports</a></li>
+                    <li><a href="#">Prices</a></li>
+                    <li><a href="#">App</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="https://eb3.autocab.net/#/36364">Rides</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Airports</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Business</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Drive</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">School Transport</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">SENS Transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="{% url 'businessTerms' %}">Business Terms & Conditions</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'websiteTerms' %}">Website Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on</h4>
+                <ul class="social-icons">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Eurocabs.uk 2023 All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Js -->
+    <script>
+        const showBtn = document.querySelector(".btn-bars"),
+            closeBtn = document.querySelector(".btn-close"),
+            navMenu = document.querySelector(".navbar-collapse");
+        navbar = document.querySelector(".navbar");
+
+        showBtn.addEventListener("click", () => {
+            navMenu.classList.add("showMenu");
+        });
+        closeBtn.addEventListener("click", () => {
+            navMenu.classList.remove("showMenu");
+        });
+
+        navMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+                navMenu.classList.remove("showMenu");
+            }
+        });
+    </script>
+</body>

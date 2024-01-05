@@ -1,0 +1,66 @@
+{% extends 'admin/dashboard.html' %}
+{% load static %}
+
+{% block active %}{%endblock%}
+{% block driverApp %} active {%endblock%}
+
+{% block content %}
+<br>
+
+<h4>Driver Application </h4>
+
+<div class="container my-4">
+    <div>
+        <h4>User Information:</h4>
+        <p><b>Email: </b>{{user.email}}</p>
+        <p><b>Phone Number: </b>{{exuser.phone_number}}</p>
+    </div>
+
+    <div>
+        <h4>Files Uploaded:</h4>
+        <p><b>Profile Photo: </b></p>
+        <img src="{{ driverFiles.profile_photo.url}}" alt="profile photo" style="width: 170px; height: auto;"><br><br>
+
+        <p><b>DVLA Driving Lincence: </b><a href="{{ driverFiles.DVLA_Driving_Licence.url }}">DVLA Driving Licence.pdf</a></p>
+        
+        <p><b>DVLA Check Code: </b>{{driverFiles.DVLA_Check_Code}}</p>
+
+        <p><b>Private Hire Driver Badge: </b><a href="{{ driverFiles.Private_Hire_Driver_Badge.url }}">Private_Hire_Driver_Badge</a></p>
+
+        <p><b>Private Hire Driver Badge: </b><a href="{{ driverFiles.Private_Hire_Driver_Licence.url }}">Private_Hire_Driver_Licence</a></p>
+
+        <p><b>MOT Test Certificate: </b><a href="{{ driverFiles.MOT_Test_Certificate.url }}">MOT Test Certificate</a></p>
+
+        <p><b>Vehicle Insurence Certificate: </b><a href="{{ driverFiles.Vehicle_Insurance_Certificate.url }}">Vehicle_Insurance_Certificate</a></p>
+
+        <p><b>V5C LogBook or New Keeper Slip or E-LogBook: </b><a href="{{ driverFiles.V5C_LogBook_or_New_Keeper_Slip_or_E_LogBook.url }}">V5C_LogBook_or_New_Keeper_Slip_or_E_LogBook</a></p>
+
+        <p><b>Bank Statement: </b> <a href="{{ driverFiles.Bank_Statement.url }}">Bank_Statement</a></p>
+
+    </div>
+
+    {% if driverFiles.accept_flag == True %}
+    <div>
+        <button disabled class="btn btn-primary">Accepted</button>
+    </div>
+    {% else %}
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-dark">Accept</button>
+        </form>
+    </div>
+    {%endif%}
+</div>
+   
+<script>
+
+  const forms = document.querySelectorAll('input')
+  for(let i of forms)
+  {
+      i.className = 'form-control'
+  }
+
+</script>
+   
+{% endblock %}

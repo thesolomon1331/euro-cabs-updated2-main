@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sec{
+            justify-content: center;
+            display:flex;
+            margin-top: 10%;
+            
+        }
+        .bd{
+            background-color: rgb(255, 242, 127);
+            padding-top: 20px;
+            padding-bottom: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .tit{
+            font-size: large;
+        }
+        .hp{
+            padding: 5px 40px;
+            /* padding-left: 40px;
+            padding-right:40px ;
+            padding-top:5px ;
+            padding-bottom:5px ; */
+            margin-left: 5px;
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+       
+        
+        }
+        .log{
+            padding: 5px 55px;
+            /* padding-left: 55px;
+            padding-right:55px ;
+            padding-top:5px ;
+            padding-bottom:5px ; */
+            margin-left: 10px;
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .botm {
+            display: flex;
+            justify-content: center;
+        }
+      
+        button {
+            border: none;
+            outline: none;
+        }
+    
+    </style>
+
+</head>
+<body>
+    <div class="sec">
+        <div class="bd" >
+            <h1 class="tit">You Are Not Authorized To View this Page</h1>
+            <div class="botm">
+                <a href="{% url 'home' %}"><button class="hp">Home Page</button></a>
+                <a href="{% url 'userLogin' %}"><button class="log">Login</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

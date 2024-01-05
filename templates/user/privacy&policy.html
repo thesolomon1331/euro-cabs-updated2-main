@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/privacy&policy.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Euro Cabs</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
+</head>
+
+<body>
+
+    <div class="navigationbar">
+        <nav class="navbar">
+            <a href="{% url 'home' %}" target="_self" class="site-name">
+                <img src="{% static 'assets/images/eurocabs-logo.png' %}" alt="">
+            </a>
+            <button type="button" class="btn-bars"> <span><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="navbar-collapse">
+                <span class="btn-close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://eb3.autocab.net/#/36364" class="nav-link">Book A Cab</a>
+                    </li>
+                    <!--  <li class="nav-item">
+                        <a href="index.html#about-container" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="#" class="nav-link">Earn with Euro Cabs</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a href="corporate.html" class="nav-link">Corporate Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#faq-section" class="nav-link">FAQs</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#table-container" class="nav-link">Airport Rates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#services-section" class="nav-link">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#faq-section" class="nav-link">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#customer-complaints" class="nav-link">Complaints Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}#about-container" class="nav-link">About Us</a>
+                    </li>
+                </ul>
+
+
+                <div class="nav-social-icon">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    &nbsp;
+
+    <div id="business-cards-container">
+        <div class="business-card-container">
+            <h1>Privacy And Policy</h1>
+            <div class="content">
+                <p>This privacy policy applies to Eurocabs website at <a href="https://eurocabs.uk/"
+                        class="hyper-link">https://eurocabs.uk/</a> (the “Website”). Eurocabs
+                    take your privacy seriously.
+                    This policy covers the collection, processing and other use of personal data under the Data
+                    Protection Act 1998 (“DPA”) and the General Data Protection Regulations (“GDPR”).
+                    If you need to contact us you can do so by emailing <a href="https://eb3.autocab.net/#/36364"
+                        class="hyper-link">bookings@eurocabsherts.co.uk</a> at any time.
+                    Information we collect
+                </p>
+
+                <p>We will collect personal data on this website only if it is directly provided to us by you the user,
+                    e.g. your e-mail address, name, home or work address and telephone number, and therefore has been
+                    provided by you with your consent. Normally you will only provide such details if you contact us for
+                    support or services or you are making a purchase from us.
+                    We also use analytical and statistical tools that monitor details of your visits to our website and
+                    the resources that you access, including, but not limited to, traffic data, location data, weblogs
+                    and other communication data (but this data will not identify you personally).</p>
+
+                <p>We may hold and process personal data that you provide to us in accordance with the DPA and GDPR.
+                    The information that we collect and store relating to you is primarily used to enable us to provide
+                    our services to you, and to meet our contractual commitments to you. In addition, we may use the
+                    information for the following purposes:
+                </p>
+
+                <li>To notify you about any changes to our website, such as improvements or service/product changes,
+                    that may affect our service;
+                </li>
+                <li>If you are an existing customer, we may contact you with information about goods and services
+                    similar to those that were the subject of a previous sale to you;
+                </li>
+                <li>Where you have consented to receive such information, to provide information on other partie's
+                    products or services that we feel may be of interest to you;
+                </li>
+                <li>Where you have consented to receive our e-newsletters, from time to time to provide that to you.
+                </li>
+
+                <h2>Disclosure of your information</h2>
+                <p>
+                    We may disclose your information to regulatory bodies to enable us to comply with the law and to
+                    assist fraud protection and minimise credit risk.
+                    Where you have consented for us to do so, we may provide your data to selected third parties who may
+                    contact you about their goods or services that you may be interested in.
+                    If you do not want us to use your data for our use, you will have the opportunity to withhold your
+                    consent to this when you provide your details to us, or you can do so by contacting us at
+                    <a href="https://eb3.autocab.net/#/36364" class="hyper-link">bookings@eurocabsherts.co.uk.</a>
+                    Please be advised that we do not reveal information about identifiable individuals to our
+                    advertisers, but we may, on occasion, provide them with aggregate statistical information about our
+                    visitors.
+                </p>
+
+                <h2>Controlling the use of your data</h2>
+                <p>If you have given us consent to use your data for a particular purpose you can revoke or vary that
+                    consent at any time. If you do not want us to use your data or want to vary the consent that you
+                    have provided you can contact us at the address detailed in clause 2 at any time.
+                </p>
+
+                <h2>Where we store and transfer your data</h2>
+                <p>
+                    We do not use or disclose sensitive personal data, such as race, religion, or political
+                    affiliations, without your explicit consent.
+                    We will process, disclose or share your personal data only if required to do so by law or in the
+                    good faith belief that such action is necessary to comply with legal requirements or legal process
+                    served on us or the website.
+                    You have the right to opt out of our processing your personal data for marketing purposes by
+                    contacting us at <a href="https://eb3.autocab.net/#/36364"
+                        class="hyper-link">bookings@eurocabsherts.co.uk.</a>
+                </p>
+
+                <h2>SECURITY</h2>
+                <p>The transmission of information via the Internet or email is not completely secure. Although we will
+                    do our best to protect your personal data, we cannot guarantee the security of data while you are
+                    transmitting it to our site; any such transmission is at your own risk. Once we have received your
+                    personal data, we will use strict procedures and security features to try to prevent unauthorised
+                    access.
+                    You might find links to third party websites on our website. These websites should have their own
+                    privacy policies, which you should check. We do not accept any responsibility or liability for their
+                    policies whatsoever as we have no control over them.
+                </p>
+
+                <h2>Use of cookies</h2>
+                <p>
+                    Our website uses cookies as most websites do. We use cookies to gather information about your
+                    computer for our services and to provide statistical information regarding the use of our Website.
+                    Such information will not identify you personally - it is statistical data about our visitors and
+                    their use of our Website. This statistical data does not identify any personal details whatsoever.
+                    We may also gather information about your general Internet use by using a cookie file. Where used,
+                    these cookies are downloaded to your computer automatically. This cookie file is stored on the hard
+                    drive of your computer, as cookies contain information that is transferred to your computer's hard
+                    drive. They help us to improve our Website and the service that we provide to you. All computers
+                    have the ability to decline cookies. This can be done by activating the setting on your browser
+                    which enables you to decline the cookies. Please note that should you choose to decline cookies, you
+                    may be unable to access particular parts of our Website.
+                    Here are some examples of how we use cookies. <br>
+
+
+                </p>
+                <li> Determining if you are logged in or not</li>
+                <li>Remembering if you have given consent to hide our privacy policy warning</li>
+                <br>
+
+                <h2>Your Rights</h2>
+                <p>
+                    The DPA and GDPR give you the right to access information held about you by us. Please write to us
+                    or contact us by email if you wish to request confirmation of what personal information we hold
+                    relating to you. There is no charge for requesting that we provide you with details of the personal
+                    data that we hold. We will provide this information within one month of your requesting the data.
+                    You have the right to change the permissions that you have given us in relation to how we may use
+                    your data. You also have the right to request that we cease using your data or that we delete all
+                    personal data records that we hold relating to you. You can exercise these rights at any time by
+                    emailing <a href="https://eb3.autocab.net/#/36364"
+                        class="hyper-link">bookings@eurocabsherts.co.uk.</a>
+                </p>
+
+                <h2>Changes to this policy</h2>
+                <p>
+                    We may update these policies to reflect changes to the website and customer feedback. Please
+                    regularly review these policies to be informed of how we are protecting your personal data.
+                    We welcome any queries, comments or requests you may have regarding this Privacy Policy. Please do
+                    not hesitate to contact us at Eurocabs or <a href="https://eb3.autocab.net/#/36364"
+                        class="hyper-link">bookings@eurocabsherts.co.uk.</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer  -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Airports</a></li>
+                    <li><a href="#">Prices</a></li>
+                    <li><a href="#">App</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="https://eb3.autocab.net/#/36364">Rides</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Airports</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Business</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">Drive</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">School Transport</a></li>
+                    <li><a href="https://eb3.autocab.net/#/36364">SENS Transport</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="{% url 'businessTerms' %}">Business Terms & Conditions</a></li>
+                    <li><a href="{% url 'privacyPolicy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'websiteTerms' %}">Website Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on</h4>
+                <ul class="social-icons">
+                    <a href="https://www.facebook.com/eurocabs/"><i class="fab fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/euro_cabs"><i class="fab fa-twitter"></i><span></span></a>
+                    <a href="https://www.linkedin.com/company/eurocabs/"><i
+                            class="fab fa-linkedin"></i><span></span></a>
+                    <!--<a href="#"><i class="fab fa-instagram"></i><span></span></a>-->
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Eurocabs.uk 2023 All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- JS  -->
+    <script>
+        const showBtn = document.querySelector(".btn-bars"),
+            closeBtn = document.querySelector(".btn-close"),
+            navMenu = document.querySelector(".navbar-collapse");
+        navbar = document.querySelector(".navbar");
+
+        showBtn.addEventListener("click", () => {
+            navMenu.classList.add("showMenu");
+        });
+        closeBtn.addEventListener("click", () => {
+            navMenu.classList.remove("showMenu");
+        });
+
+        navMenu.addEventListener("click", (event) => {
+            if (event.target.tagName === "A") {
+                navMenu.classList.remove("showMenu");
+            }
+        });
+    </script>
+</body>

@@ -1,0 +1,25 @@
+{% extends 'user/DriverLogin.html' %}
+
+
+{% block otp %}
+
+<form method="POST" class="driver-form" >
+    {% csrf_token %}
+    <h2>Enter The OTP You Received on Your Mail</h2>
+    <div class="form-group">
+        <label for="email">OTP</label>
+        <input type="text" id="email" name="otp" placeholder="Enter OTP" required>
+    </div>
+    <button type="submit" class="signup-driver-btn">Verify</button>
+    {% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+    
+    <p>The OTP will be valid for 1 Minutes</p>
+</form>
+
+{%endblock%}

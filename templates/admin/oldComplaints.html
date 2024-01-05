@@ -1,0 +1,64 @@
+{% extends 'admin/dashboard.html' %}
+{% load static %}
+
+{% block active %}{%endblock%}
+{% block complaint %}active{%endblock%}
+
+
+{% block content %}
+<br>
+  <div class="d-flex justify-content-between">
+    <h4>Complaints</h4>
+    <div>
+        <a href="{% url 'complaints' %}"><button class="btn btn-primary">New</button></a>
+        <a href="{% url 'ongoing' %}"><button class="btn btn-warning">On Going</button></a>
+        <a href="{% url 'oldComplaints' %}"><button class="btn btn-dark">Previous</button></a>
+    </div>
+  </div>
+  
+  {% if complaints %}
+  <h4 class="text-warning mt-5">Old Complaints</h4>
+   <div class="list-group mt-5" >
+    
+    <!-- {% for complaint in complaints %}
+    <a href="{% url 'showComplaint' complaint.id %}" {% if complaint.opened  == False %} style="border: 2px solid blue;"{% else %} style="border: 2px solid rgb(133, 133, 255);" {% endif %} class="list-group-item list-group-item-action my-3" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{complaint.userName}}</h5>
+        <small>{{complaint.dateOfJourney}}<br> {% if complaint.opened  == False %} <span class="mx-4 p-1 text-white" style="font-size: 10px; background-color: green; border-radius: 30%;">new</span> {% else %} <span class="mx-4" style="font-size: 10px; border-radius: 30%; background-color: blue; padding: 4px; color: white;">Opened</span></small>{% endif %}
+      </div>
+      <p class="mb-1">{{complaint.complaintRegarding}}</p>
+      <small>Starting Poing: {{complaint.pickUpAddress}} <b>-- TO --</b>Drop Point: {{complaint.dropAddress}}</small>
+    </a>
+    {% endfor %} -->
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Journey</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for complaint in complaints %}
+          <tr>
+            <th>{{complaint.ComplintId}}</th>
+            <td>{{complaint.userName}}</td>
+            <td>{{complaint.dateOfJourney}}</td>
+            <td><a href="{% url 'showComplaint' complaint.id %}"><button class="btn btn-dark">Open</button></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  </div>
+   {% else %}
+    <div class="text-center mt-4">
+      <img src="{% static 'img/nomail.svg' %}" alt="No Complaints Img" class="img-fluid" style="width: 400px;">
+      <h1>There is No Old Complaints...</h1>
+    </div>
+   
+
+   {% endif %}
+{% endblock %}

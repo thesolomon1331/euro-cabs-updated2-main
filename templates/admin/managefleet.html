@@ -1,0 +1,170 @@
+{% extends 'admin/dashboard.html' %}
+{% load static %}
+
+{% block active %}{%endblock%}
+{% block fleet %} active {%endblock%}
+
+{% block content %}
+
+<style>
+    /* Add these styles to your CSS file or style block in your HTML */
+.messages {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+/* Style for error messages */
+.messages .error {
+    background-color: #ff6666;
+    color: #fff;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Style for success messages */
+.messages .success {
+    background-color: #66ff66;
+    color: #000;
+    border: 1px solid #00cc00;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Style for warning messages */
+.messages .warning {
+    background-color: #ffff66;
+    color: #000;
+    border: 1px solid #cccc00;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+</style>
+<ul class="nav nav-pills nav-fill border p-3">
+    <li class="nav-item">
+        <form action="" method="GET">
+     
+            <input type="text" hidden value="all" name="q">
+            <button class="btn btn-primary">Fleet</button>
+        </form>
+    </li>
+    <li class="nav-item">
+        <form action="" method="GET">
+       
+            <input type="text" hidden value="warning" name="q">
+            <button class="btn btn-warning">Alerts</button>
+        </form>
+    </li>
+    <li class="nav-item">
+        <form action="" method="GET">
+            
+            <input type="text" hidden value="exp" name="q">
+            <button class="btn btn-danger">Expired</button>
+        </form>
+    </li>
+    <li class="nav-item">
+       <a href="{% url 'myfleet' %}"><button class="btn btn-dark "><i class="bi bi-car-front mx-2"></i>Add</button></a>
+    </li>
+  </ul>
+    <div class="container">
+        <!-- <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-dark">Submit</button>
+        </form> -->
+
+        
+        <table class="table mt-5 border">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">Plate No</th>
+                <th scope="col">Make or Model</th>
+                <th scope="col">PH/HC</th>
+                <th scope="col">Num Plate</th>
+                <th scope="col">Color</th>
+                <th scope="col">Plate Exp Date</th>
+                <th scope="col">MOT Exp Date</th>
+              </tr>
+            </thead>
+            
+            <tbody class="text-center">
+                {% if exwar %}
+                <tr>
+                    <td colspan="7" class="bg-danger text-white" style="font-size: 20px;">{% if exps %}Plate Expired Vehicles{%else%}Plate Expiring Vehicles{%endif%}</td>
+                </tr>
+                {% for i in exwar %}
+              <tr class="border-warning text-warning">
+                <th>{{i.Plate_Number}}</th>
+                <td><a href="{% url 'editfleet' i.id %}">{{i.Make_or_Model}}</a></td>
+                <td>{{i.PH_or_HC}}</td>
+                <td>{{i.Number_Plate}}</td>
+                <td>{{i.Color}}</td>
+                <td>{{i.Plate_Expiry_Date}}</td>
+                <td>{{i.MOT_Expiry_Date}}</td>
+              </tr>
+             
+                {% endfor %}
+                <tr>
+                    <td colspan="7" class="pt-5"></td>
+                  </tr>
+                {% endif %}
+
+
+                {% if mot %}
+                <tr>
+                    <td colspan="7" class="bg-danger text-white"  style="font-size: 20px;">{% if exps %}MOT Expired Vehicles{%else%}MOT Expiring Vehicles{%endif%}</td>
+                </tr>
+                {% for i in mot %}
+              <tr class="border-warning text-warning">
+                <th>{{i.Plate_Number}}</th>
+                <td><a href="{% url 'editfleet' i.id %}">{{i.Make_or_Model}}</a></td>
+                <td>{{i.PH_or_HC}}</td>
+                <td>{{i.Number_Plate}}</td>
+                <td>{{i.Color}}</td>
+                <td>{{i.Plate_Expiry_Date}}</td>
+                <td>{{i.MOT_Expiry_Date}}</td>
+              </tr>
+             
+                {% endfor %}
+                <tr>
+                    <td colspan="7" class="pt-5"></td>
+                  </tr>
+                {% endif %}
+
+
+
+                {% if data %}
+                <tr>
+                    <td colspan="7" class="bg-primary text-white"  style="font-size: 20px;">Total Fleet</td>
+                </tr>
+                {% for datas in data %}
+              <tr>
+                <th>{{datas.Plate_Number}}</th>
+                <td><a href="{% url 'editfleet' datas.id %}">{{datas.Make_or_Model}}</a></td>
+                <td>{{datas.PH_or_HC}}</td>
+                <td>{{datas.Number_Plate}}</td>
+                <td>{{datas.Color}}</td>
+                <td>{{datas.Plate_Expiry_Date}}</td>
+                <td>{{datas.MOT_Expiry_Date}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}
