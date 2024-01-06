@@ -4,7 +4,6 @@ let result;
 const getDest = async()=> {
 
     document.getElementById('price').style.display = 'none';
-    document.querySelector('.book').style.display = 'none';
 
     const fromCity = document.getElementById('from')
 
@@ -49,7 +48,6 @@ const getPrice = async() => {
             document.getElementById('price').style.justifyContent = 'space-between'
             document.getElementById('night').value = `£ ${i.nightRate}`;
             document.getElementById('day').value = `£ ${i.dayRate}`;
-            document.querySelector('.book').style.display = 'block';
         }
         
     }
