@@ -4,6 +4,7 @@ let result;
 const getDest = async()=> {
 
     document.getElementById('price').style.display = 'none';
+    document.getElementsByClassName('book').style.display = 'none';
 
     const fromCity = document.getElementById('from')
 
@@ -12,11 +13,6 @@ const getDest = async()=> {
     let domain = window.location.hostname;
 
     const destUrl = `https://${domain}/users/airportDest?dest=${fromCity.value}`;
-
-    console.log(domain);
-
-    console.log(destUrl);
-
 
 
     const response = await fetch(destUrl)
@@ -53,6 +49,7 @@ const getPrice = async() => {
             document.getElementById('price').style.justifyContent = 'space-between'
             document.getElementById('night').value = `£ ${i.nightRate}`;
             document.getElementById('day').value = `£ ${i.dayRate}`;
+            document.getElementsByClassName('book').style.display = 'block';
         }
         
     }
