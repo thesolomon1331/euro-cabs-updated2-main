@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euro Cabs</title>
+    <title>Eurocabs Business</title>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
     <link rel="stylesheet" href="{% static 'assets/css/corporate.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -325,12 +325,11 @@
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="https://eb3.autocab.net/#/36364">Rides</a></li>
-                    <li><a href="https://eb3.autocab.net/#/36364">Airports</a></li>
-                    <li><a href="https://eb3.autocab.net/#/36364">Business</a></li>
-                    <li><a href="https://eb3.autocab.net/#/36364">Drive</a></li>
-                    <li><a href="https://eb3.autocab.net/#/36364">School Transport</a></li>
-                    <li><a href="https://eb3.autocab.net/#/36364">SENS Transport</a></li>
+                    <li><a href="{% url 'home' %}#services-section">Rides</a></li>
+                    <li><a href="{% url 'home' %}#services-section">Airports</a></li>
+                    <li><a href="{% url 'home' %}#services-section">Business</a></li>
+                    <li><a href="{% url 'home' %}#services-section">Drive</a></li>
+                    <li><a href="{% url 'home' %}#services-section">School Transport</a></li>
                 </ul>
             </div>
             <div class="footer-section">

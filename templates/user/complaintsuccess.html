@@ -5,73 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="5;url={% url 'home' %}">
-    <title>Document</title>
+    <title>Complaint Received</title>
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
         .container {
-            margin-top: 15%;
             display: flex;
+            align-items: center;
             justify-content: center;
+            height: 100vh;
         }
 
         .box {
-            background-color: black;
-            padding: 20px 20px;
+            background-color: #333;
+            padding: 20px;
             border-radius: 10px;
-        }
-
-        .sma {
             text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 30px;
             color: white;
-        }
-
-        .imgs {
-            display: flex;
-            justify-content: center;
         }
 
         .imgs img {
             width: 100px;
         }
 
+        .sma {
+            font-size: 30px;
+            margin-top: 15px;
+        }
+
         .gha {
-            font-family: 'Courier New', Courier, monospace;
             font-size: 20px;
-            color: white;
+            margin-top: 10px;
         }
 
         .gha a {
             text-decoration: none;
-            color: yellow;
-            border-bottom: 1px solid rgb(255, 255, 255);
+            color: #f8d615;
+            border-bottom: 1px solid #f8d615;
         }
 
         @media only screen and (max-width: 600px) {
-            .container {
-            margin-top: 25%;
-            display: flex;
-            justify-content: center;
-        }
-
             .sma {
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 30px;
-            color: white;
-        }
+                font-size: 20px;
+            }
 
-        .gha a {
-            text-decoration: none;
-            color: yellow;
-            border-bottom: 1px solid rgb(255, 255, 255);
-        }
-
-        .gha {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-            color: white;
-        }
+            .gha {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -79,10 +64,10 @@
     <div class="container">
         <div class="box">
             <div class="imgs">
-                <img src="{% static 'img/tick.png' %}" alt="">
+                <img src="{% static 'img/tick.png' %}" alt="Tick Icon">
             </div>
-            <p class="sma">Complaint Received </p>
-            <p class="gha">You will be redirected to <a href="{% url 'home' %}">HomePage</a>  in 5 Seconds...</p>
+            <p class="sma">Complaint Received</p>
+            <p class="gha">You will be redirected to <a href="{% url 'home' %}">HomePage</a> in 5 seconds...</p>
         </div>
     </div>
 </body>
