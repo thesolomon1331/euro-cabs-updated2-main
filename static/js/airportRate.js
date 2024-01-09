@@ -14,7 +14,7 @@ const getDest = async()=> {
 
     let domain = window.location.hostname;
 
-    const destUrl = `http://${domain}:8000/users/airportDest?dest=${fromCity.value}`;
+    const destUrl = `https://${domain}/users/airportDest?dest=${fromCity.value}`;
 
 
     const response = await fetch(destUrl)
@@ -50,7 +50,7 @@ const getPrice = async() => {
         
         if(result.dest[0].dayRate == undefined)
             {
-                const destUrls = `http://127.0.0.1:8000/users/airportRates?city=${fromCity.value}&airport=${where}`;
+                const destUrls = `https://eurocabs.uk/users/airportRates?city=${fromCity.value}&airport=${where}`;
 
                 response = await fetch(destUrls)
 
