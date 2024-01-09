@@ -1,12 +1,18 @@
 from django.forms import ModelForm
-from . models import airportCity, Fleet
+from . models import Fleet, Airports, City
 import users.models
 
 
-class MyAirportCity(ModelForm):
+class MyAirport(ModelForm):
     class Meta:
-        model = airportCity
-        exclude = ('id', 'fromCity')
+        model = Airports
+        fields = '__all__'
+
+class MyCity(ModelForm):
+    class Meta:
+        model = City
+        fields = '__all__'
+
 
 class MyFleets(ModelForm):
     class Meta:

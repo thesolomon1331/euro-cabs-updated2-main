@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponse
 from .models import ComplaintForm, DriverFiles, Reply
-import dashboard.models
 from .forms import MyBusinessForm, MyDriver
 from django.contrib import messages
 from .custom import generate_unique_random_numbers
-
+import dashboard.models
 
 
 # Create your views here.
@@ -14,8 +13,8 @@ from .custom import generate_unique_random_numbers
 #Function to Home Page
 
 def home(request):
-    airport = dashboard.models.airportRates.objects.all()
-    city = dashboard.models.airportCity.objects.all()
+    airports = dashboard.models.Airports.objects.all()
+    cities = dashboard.models.City.objects.all()
     # other = ''
     # if request.method == 'POST':
     #     userName = request.POST['userName']
@@ -46,8 +45,8 @@ def home(request):
     #     print("Something Went Wrong Here also......")
 
     context = {
-        'airport': airport,
-        'city': city
+       'airport': airports,
+       'city' : cities
     }
 
     return render(request, 'user/index.html', context)
@@ -126,8 +125,30 @@ def complaintForm(request):
     else:
         print("Something Went Wrong Here also......")
     
-        
+# def toName(request):
+#     if request.method == 'GET':
+#         value = request.GET['value']
 
+        
+def airportDest(request):
+   
+    if request.method == 'GET':
+        fromValue = request.GET['dest']
+        try:
+            airp = dashboard.models.Airports.objects.get(id = fromValue)
+            fValue = dashboard.models.Rates.objects.filter(airport = airp)
+            dest = list(fValue.values())
+            for i in dest:
+                i.pop("airport_name")
+            return JsonResponse({'res': dest})
+        except:
+            city = dashboard.models.City.objects.get(id = fromValue)
+            fValue = dashboard.models.Rates.objects.filter(city = city)
+            dest = list(fValue.values())
+            for i in dest:
+                i.pop("city_name")
+            return JsonResponse({'res': dest})
+            
 
 
 # Function to get the Business Details from the Client
@@ -172,36 +193,6 @@ def businessForm(request):
     return render(request, 'user/corporate.html')
 
 
-#Function to Get the Destination from the Selected Airport
-
-def airportDest(request):
-    if request.method == 'GET':
-        fromCity = request.GET['dest']
-        try:
-            dest = dashboard.models.airportCity.objects.filter(fromCity = dashboard.models.airportRates.objects.get(id = fromCity))
-            dest_list = list(dest.values())
-            return JsonResponse({'dest': dest_list})
-        except:
-            dest = dashboard.models.airportRates.objects.all()
-            return JsonResponse({'dest': list(dest.values())})
-    
-    
-def GetAirportRates(request):
-    if request.method == 'GET':
-        airport = request.GET['airport']
-        city = request.GET['city']
-
-        airp = dashboard.models.airportRates.objects.get(id = airport)
-        citys = dashboard.models.airportCity.objects.filter(fromCity = airp)
-        name = citys.contains(dashboard.models.airportCity.objects.get(id = city))
-        if name == True:
-            dest = dashboard.models.airportCity.objects.filter(id = city)
-
-            return JsonResponse({'dest': list(dest.values())})
-        else:
-            return JsonResponse({'dest': 'failed'})
-       
-        
 
 
 # Function to airport page

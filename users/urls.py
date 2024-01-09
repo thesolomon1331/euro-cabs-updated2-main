@@ -16,7 +16,7 @@ urlpatterns = [
     path('airportDest/', views.airportDest, name='airportDest'),
     path('airports/', views.airports, name='airports'),
     path('schools/', views.schools, name='schools'),
-    path('airportRates/', views.GetAirportRates, name='getAirportRates'),
+    # path('airportRates/', views.GetAirportRates, name='getAirportRates'),
 
     ##Driver Registration Field
 

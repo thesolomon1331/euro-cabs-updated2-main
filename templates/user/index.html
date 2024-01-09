@@ -139,11 +139,11 @@
           <option value="none">Starting Point</option>
           <option value="airport">---Available Airports---</option>
           {% for i in airport %}
-          <option value="{{i.id}}" id="airport">{{i.airportName}}</option>
+          <option value="{{i.id}}" id="airport">{{i.name}}</option>
           {% endfor %}
           <option value="city"><b style="background-color: red;">---Available Cities---</b></option>
           {% for j in city %}
-          <option value="{{j.id}}" id="city">{{j.to}}</option>
+          <option value="{{j.id}}" id="city">{{j.name}}</option>
           {% endfor %}
           
         </select>
