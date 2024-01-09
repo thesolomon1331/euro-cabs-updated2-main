@@ -130,16 +130,22 @@
   <div id="table-container">
     <h1 class="heading">Airport Transfer Rates</h1>
     
-    <form action="#" class="location" method="post" onsubmit="event.preventDefault()">
+    <div action="#" class="location">
       <h3>Enter Your Source And Destination </h3>
       <div class="input-field">
         <i class="fas fa-map-marker-alt"></i>
         <label for="from" class="airport">From</label>
         <select id="from" name="from" onchange="getDest()">
-          <option value="none">Select A Airport</option>
-          {% for i in data %}
-          <option value="{{i.id}}">{{i.airportName}}</option>
+          <option value="none">Starting Point</option>
+          <option value="airport">---Available Airports---</option>
+          {% for i in airport %}
+          <option value="{{i.id}}" id="airport">{{i.airportName}}</option>
           {% endfor %}
+          <option value="city"><b style="background-color: red;">---Available Cities---</b></option>
+          {% for j in city %}
+          <option value="{{j.id}}" id="city">{{j.to}}</option>
+          {% endfor %}
+          
         </select>
         <!-- <input type="text" id="from" name="from" placeholder="Enter your location"> -->
       </div>
@@ -172,8 +178,8 @@
       
 
      
-      <!-- <button type="submit" class="airport-booking">Submit</button> -->
-    </form>
+      <a href="http://eb3.autocab.net/#/36364" style="display: none;" id="booknow"><button class="airport-booking">Book Now</button></a>
+    </div>
 
   </div>
 
