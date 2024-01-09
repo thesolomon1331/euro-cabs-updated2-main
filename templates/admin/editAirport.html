@@ -8,13 +8,14 @@
 <br>
 <h4>Manage Airport</h4>
    <div class="container mt-2 p-5">
-        <p style="font-size: 20px;">Update City</p>
+        <p style="font-size: 20px;">Update Airport</p>
       <form method="POST">
          {% csrf_token %}
          {{form.as_p}}
          <button class="btn btn-dark">Update</button>
    </form>
-   <a href="{% url 'deleteCity' data.id %}"><button class="btn btn-danger my-3">Delete</button></a>
+   
+   <a href="{% url 'deleteAirport' data.id %}"><button class="btn btn-danger my-3">Delete</button></a>
    </div>
 
 
