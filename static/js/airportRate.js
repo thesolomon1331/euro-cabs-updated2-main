@@ -30,11 +30,11 @@ const getDest = async()=> {
 
         where.appendChild(op)
 
-    for(let i of result.dest)
+    for(let i of result.res)
     {
         const op = document.createElement('option')
         op.value = i.id
-        op.innerText = i.airportName || i.to
+        op.innerText = i.airport_name || i.city_name
 
         where.appendChild(op)
     }
@@ -45,61 +45,65 @@ const getDest = async()=> {
 const getPrice = async() => {
     const where = document.getElementById('where').value;
 
+    for(let i of result.res )
+    {
+        if(i.id === where)
+        {
+            document.getElementById('price').style.display = 'flex';
+            document.getElementById('price').style.justifyContent = 'space-between'
+            document.getElementById('night').value = `£ ${i.nightRate}`;
+            document.getElementById('day').value = `£ ${i.dayRate}`;
 
-    try {
+            document.getElementById('booknow').style.display = 'block';
+        }
+    }
+}
         
-        if(result.dest[0].dayRate == undefined)
-            {
-                const destUrls = `https://eurocabs.uk/users/airportRates?city=${fromCity.value}&airport=${where}`;
-
-                response = await fetch(destUrls)
-
-                result = await response.json()
+        
 
                 
-        // console.log(result)
+//         // console.log(result)
              
 
-                if (result.dest == 'failed')
-                {
-                    document.getElementById('price').style.display = 'flex';
-                    document.getElementById('price').style.justifyContent = 'space-between'
-                    document.getElementById('night').value = "Not Available";
-                    document.getElementById('day').value = "Not Available";
+//         if (result.dest == 'failed')
+//         {
+//             document.getElementById('price').style.display = 'flex';
+//             document.getElementById('price').style.justifyContent = 'space-between'
+//             document.getElementById('night').value = "Not Available";
+//             document.getElementById('day').value = "Not Available";
 
-                    document.getElementById('booknow').style.display = 'block';
-                }
-                else{
-                    for(let i of result.dest )
-                {
-            
-        
-                    document.getElementById('price').style.display = 'flex';
-                    document.getElementById('price').style.justifyContent = 'space-between'
-                    document.getElementById('night').value = `£ ${i.nightRate}`;
-                    document.getElementById('day').value = `£ ${i.dayRate}`;
+//             document.getElementById('booknow').style.display = 'block';
+//         }
+//         else
+//         {
+//             for(let i of result.dest )
+//             {
+//                 document.getElementById('price').style.display = 'flex';
+//                 document.getElementById('price').style.justifyContent = 'space-between'
+//                 document.getElementById('night').value = `£ ${i.nightRate}`;
+//                 document.getElementById('day').value = `£ ${i.dayRate}`;
 
-                    document.getElementById('booknow').style.display = 'block';
-                }
-                }
-            }
+//                 document.getElementById('booknow').style.display = 'block';
+//             }
+//         }
+//     }
 
-        else{
-            for(let i of result.dest )
-            {
-                if(i.id === where)
-                {
-                    document.getElementById('price').style.display = 'flex';
-                    document.getElementById('price').style.justifyContent = 'space-between'
-                    document.getElementById('night').value = `£ ${i.nightRate}`;
-                    document.getElementById('day').value = `£ ${i.dayRate}`;
+//         else{
+//             for(let i of result.dest )
+//             {
+//                 if(i.id === where)
+//                 {
+//                     document.getElementById('price').style.display = 'flex';
+//                     document.getElementById('price').style.justifyContent = 'space-between'
+//                     document.getElementById('night').value = `£ ${i.nightRate}`;
+//                     document.getElementById('day').value = `£ ${i.dayRate}`;
 
-                    document.getElementById('booknow').style.display = 'block';
-                }
-            }
-        }
-    }catch (E)
-    {
-        console.log("This Destination is Not Available")
-    }  
-}
+//                     document.getElementById('booknow').style.display = 'block';
+//                 }
+//             }
+//         }
+//     }catch (E)
+//     {
+//         console.log("This Destination is Not Available")
+//     }  
+// }

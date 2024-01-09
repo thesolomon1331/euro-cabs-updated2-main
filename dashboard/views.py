@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 import users.models
 import accounts.models
-from . models import airportRates, airportCity, businessForm, Fleet, ReplyCus
+from . models import businessForm, Fleet, ReplyCus, Airports, City, Rates
 from django.http import HttpResponse, JsonResponse
-from .forms import MyAirportCity, MyFleets, MyReply
+from .forms import MyFleets, MyReply, MyAirport, MyCity
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
@@ -114,59 +114,71 @@ def Resolved(request, pk):
         return JsonResponse({'status': 'failed'})
    
 
+
+
+def addCity(request):
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            cityName = request.POST['cityName']
+            city = City(name = cityName)
+            city.save()
+            messages.success(request, "City Added Succesfully")
+            return redirect("addAirports")
+
 # Fucntion to Add Airports to the list
 
 def addAirports(request):
     if request.user.is_superuser:
-        data = airportRates.objects.all()
-    
         if request.method == 'POST':
             airportName = request.POST['airportName']
-            try:
-                form = airportRates(airportName = airportName)
-                form.save()
-            except:
-                print("Something Went Wrong")
+            airport = Airports(name = airportName)
+            airport.save()
 
+        airports = Airports.objects.all()
+        cities = City.objects.all()
         context = {
-            'data': data
+            # 'data': data
+            'airports': airports, 
+            'cities': cities
         }
         return render(request, 'admin/addAirport.html', context)
     else:
         return render(request, 'admin/notAuthorised.html')
+
+def airportManage(request, pk):
+    if request.user.is_superuser:
+        data = Airports.objects.get(id = pk)
+        form = MyAirport(instance = data)
+        if request.method == 'POST':
+            form = MyAirport(request.POST, instance=data)
+            if form.is_valid():
+                form.save()
+        context = {
+            'form': form,
+            'data': data
+        }
+
+        return render(request, 'admin/editAirport.html', context)
 
 
 # Function to Manage the City
     
 def cityManage(request, pk):
     if request.user.is_superuser:
-        form = MyAirportCity()
-        aid = airportRates.objects.get(id = pk)
-        data = airportCity.objects.filter(fromCity = pk)
+        data = City.objects.get(id = pk)
+        form = MyCity(instance = data)
         if request.method == 'POST':
-            data = MyAirportCity(request.POST)
+            data = MyCity(request.POST, instance = data)
             if data.is_valid():
-                obj = data.save(commit=False)
-                obj.fromCity = aid
-                obj.save()
-                return redirect(reverse('cityManage', args = [pk]))
+                data.save()
+                return redirect("addAirports")
             else:
                 messages.error("Something Went Wrong...")
-                # print("Some Thing is Wrong in your data")
-        # cityName = request.POST['cityName']
-        # day = request.POST['day']
-        # night = request.POST['night']
-        # form = airportCity(fromCity = aid, to = cityName, dayRate = day, nightRate = night)
-        # try:
-        #     form.save()
-        # except:
-        #     print("Something Went Wrong..")
         context = {
-            'data': data,
             'form': form,
-            'aid': aid
+            'data': data
         }
-        return render(request, 'admin/cityManage.html', context)
+        return render(request, 'admin/editCity.html', context)
     else:
         return render(request, 'admin/notAuthorised.html')
 
@@ -179,45 +191,40 @@ def custom404(request, exception = None):
 
 
 # Function to Edit the City
+def CreateRoute(request):
+    cities = City.objects.all()
+    airports = Airports.objects.all()
+    if request.method == 'POST':
+        airport = request.POST['airport']
+        city = request.POST['city']
+        dayRate = request.POST['dayRate']
+        nightRate = request.POST['nightRate']
 
-def editCity(request, pk):
-    if request.user.is_superuser:
-
-        data = airportCity.objects.get(id = pk)
-        form = MyAirportCity(instance=data)
-        aid = airportRates.objects.get(id = data.fromCity.id)
-
-        if request.method == 'POST':
-            datas = MyAirportCity(request.POST, instance=data)
-            if datas.is_valid():
-                datas.save()
-                return redirect(reverse('cityManage', args=[aid.id]))
-            # obj = datas.save(commit=False)
-            # obj.fromCity = aid
-            # obj.save()
-            else:
-                messages.error(request, "Sorry, Something Went Wrong, Check Your Inputs...")
-        else:
-            messages.error(request, "I think you sent a bad request, for security issues we cannot allow your submit")
+        airp = airports.get(id = airport)
+        cit = cities.get(id = city)
         
+        try:
+            air = Rates.objects.filter(airport = airp)
+            air.get(city = cit)
+            messages.error(request, "There is Already a Route....")
+        except:
+            data = Rates(airport = airp, city = cit, dayRate = dayRate, nightRate = nightRate, airport_name = airp.name, city_name = cit.name, who_created = request.user)
+            data.save()
+            messages.success(request, "Route Created Successfully..")
 
-        context = {
-            'form': form
-        }
-
-        return render(request, 'admin/editCity.html', context)
-    else:
-        return render(request, 'admin/notAuthorised.html')
+    context = {
+        'cities': cities,
+        'airports': airports
+    }
+    return render(request, 'admin/createRoute.html', context)
 
 # Function to Delete the City
 
 def deleteCity(request, pk):
     if request.user.is_superuser:
-        data = airportCity.objects.get(id = pk)
-        aid = airportRates.objects.get(id = data.fromCity.id)
-
+        data = City.objects.get(id = pk)
         data.delete()
-        return redirect(reverse('cityManage', args=[aid.id]))
+        return redirect('addAirports')
     else:
         return render(request, 'admin/notAuthorised.html')
 
@@ -226,7 +233,7 @@ def deleteCity(request, pk):
 
 def deleteAirport(request, pk):
     if request.user.is_superuser:
-        data = airportRates.objects.get(id = pk)
+        data = Airports.objects.get(id = pk)
         data.delete()
         return redirect('addAirports')
     else:
