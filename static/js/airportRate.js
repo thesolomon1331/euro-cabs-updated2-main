@@ -26,7 +26,7 @@ const getDest = async()=> {
    
     const op = document.createElement('option')
         op.value = 'none'
-        op.innerText = 'Select A City'
+        op.innerText = 'Select A Destination'
 
         where.appendChild(op)
 
