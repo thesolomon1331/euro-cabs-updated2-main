@@ -11,6 +11,10 @@ urlpatterns = [
     path('<str:pk>/cityManage/', views.cityManage, name='cityManage'),
     path('<str:pk>/airportManage/', views.airportManage, name = 'airportManage'),
     path('createRoute/', views.CreateRoute, name='createRoute'),
+    path('editRoute/<str:pk>/', views.EditRoute, name='editroute'),
+    path('deleteRoute/<str:pk>/', views.DeleteRoute, name='deleteroute'),
+
+
     path('deleteCity/<str:pk>/', views.deleteCity, name='deleteCity'),
     path('deleteAirport/<str:pk>/', views.deleteAirport, name='deleteAirport'),
     path('businessForms/', views.businessForms, name='businessForms'),

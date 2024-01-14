@@ -4,13 +4,13 @@ import users.models
 import accounts.models
 from . models import businessForm, Fleet, ReplyCus, Airports, City, Rates
 from django.http import HttpResponse, JsonResponse
-from .forms import MyFleets, MyReply, MyAirport, MyCity
+from .forms import MyFleets, MyReply, MyAirport, MyCity, MyRates
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
-from django.utils import timezone
-from . utils import SendMail
+from . utils import SendMail, DuplicateRoute
 from django.contrib.sites.shortcuts import get_current_site
+from django.db.models import Q
 
 
 # Create your views here.
@@ -19,7 +19,55 @@ from django.contrib.sites.shortcuts import get_current_site
 @login_required
 def adminDashborad(request):
     if request.user.is_superuser:
-        return render(request, 'admin/dashboard.html')
+        total_complaints = len(users.models.ComplaintForm.objects.all())
+        total_Business_query = len(businessForm.objects.all())
+        total_Routes = len(Rates.objects.all())
+        total_cities = len(City.objects.all())
+        total_airports = len(Airports.objects.all())
+        total_Fleet = len(Fleet.objects.all())
+
+        month_names = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+        ]
+
+        data = users.models.ComplaintForm.objects.all()
+        today = datetime.now().month
+        data_one = len(data.filter(created_at__month = today))
+
+        two = datetime.now() - timedelta(days=30)
+        data_two = len(data.filter(created_at__month = two.month))
+
+        three = datetime.now() - timedelta(days=60)
+        data_three = len(data.filter(created_at__month = three.month))
+
+        four = datetime.now() - timedelta(days=90)
+        data_four = len(data.filter(created_at__month = four.month))
+
+        months_data = [data_one, data_two, data_three, data_four]
+
+        month_name = []
+        j = 0
+        while(j < 4):
+            month_name.append(month_names[today-1])
+            today -= 1
+            j += 1
+
+        month_name.reverse()
+        months_data.reverse()
+    
+        context = {
+            'total_business_query': total_Business_query,
+            'total_airports': total_airports,
+            'total_cities': total_cities,
+            'total_Routes': total_Routes,
+            'total_Fleet': total_Fleet,
+            'total_complaints': total_complaints,
+            # 'data_for_chart': data_for_chart,
+            'months': month_name,
+            'data': months_data
+        }
+        return render(request, 'admin/dashboard.html', context)
     return render(request, 'admin/notAuthorised.html')
 
 # Function to Load the Complaints to the user
@@ -59,16 +107,16 @@ def showComplaint(request, pk):
                 form = MyReply({'messages' : mesage, 'com_id' : data, 'who_sent' : request.user})
                 subject = "Hello, This is a  message from Eurocabs for your Complaint.."
                 
-                # try:
-                if form.is_valid():
-                    obj = form.save(commit = False)
-                    current_site = get_current_site(request)
-                    dom = current_site.domain
-                    messag = "Hey, Hello " + data.userName + "\nComplaint ID: " + data.ComplintId + "\n\n" + mesage +"\n\nIf you want to reply for this message click on below link \n\n"+ dom+"/users/comreply/" + str(data.id) +"/"+str(obj.id) +"\n\nThank You EuroCabs.."
-                    SendMail(data.mail, messag, subject)
-                    obj.save()
-                # except InterruptedError:
-                messages.error(request, "Sorry Can't Send Mail... Try Again..")
+                try:
+                    if form.is_valid():
+                        obj = form.save(commit = False)
+                        current_site = get_current_site(request)
+                        dom = current_site.domain
+                        messag = "Hey, Hello " + data.userName + "\nComplaint ID: " + data.ComplintId + "\n\n" + mesage +"\n\nIf you want to reply for this message click on below link \n\n"+ dom+"/users/comreply/" + str(data.id) +"/"+str(obj.id) +"\n\nThank You EuroCabs.."
+                        SendMail(data.mail, messag, subject)
+                        obj.save()
+                except InterruptedError:
+                    messages.error(request, "Sorry Can't Send Mail... Try Again..")
 
 
             context = {
@@ -129,17 +177,20 @@ def addCity(request):
 
 def addAirports(request):
     if request.user.is_superuser:
+        routes = Rates.objects.all()
         if request.method == 'POST':
             airportName = request.POST['airportName']
             airport = Airports(name = airportName)
             airport.save()
+            messages.success(request, "Airport Added Successfully..")
 
         airports = Airports.objects.all()
         cities = City.objects.all()
         context = {
             # 'data': data
             'airports': airports, 
-            'cities': cities
+            'cities': cities,
+            'routes': routes
         }
         return render(request, 'admin/addAirport.html', context)
     else:
@@ -460,3 +511,32 @@ def DeleteFleet(request, pk):
     data.delete()
     messages.success(request, "Deleted Successfully..")
     return render(request, 'admin/managefleet.html')
+
+
+# View to Edit a Route
+def EditRoute(request, pk):
+    data = Rates.objects.get(id = pk)
+    form = MyRates(instance= data)
+
+    if request.method == 'POST':
+        dat = MyRates(request.POST, instance=data)
+        if dat.is_valid():
+            obj = dat.save(commit= False)
+            obj.who_created = request.user
+            obj.save()
+            messages.success(request, 'Route Updated Successfully..')
+            return redirect(reverse('editroute', args=[pk]))
+        else:
+            messages.error(request, 'Something Went Wrong..')
+
+    context = {
+        'form':form,
+    }
+    return render(request, 'admin/editRoute.html', context)
+
+# View to Delete a Route
+def DeleteRoute(request, pk):
+    data = Rates.objects.get(id = pk)
+    data.delete()
+    messages.success(request, "Route Deleted Successfully...")
+    return redirect('addAirports')
