@@ -18,10 +18,10 @@ urlpatterns = [
     path('schools/', views.schools, name='schools'),
     # path('airportRates/', views.GetAirportRates, name='getAirportRates'),
 
-    ##Driver Registration Field
+    #Driver Registration Field
 
-    #path('driverForm/', views.DriverForm, name='driverForm'),
-    #path('driverDash/', views.DriverDash, name='driverDash'),
+    path('driverForm/', views.DriverForm, name='driverForm'),
+    path('driverDash/', views.DriverDash, name='driverDash'),
 
 
     ## Users Reply for A complaint Feedback
