@@ -13,8 +13,8 @@ import dashboard.models
 #Function to Home Page
 
 def home(request):
-    airports = dashboard.models.Airports.objects.all()
-    cities = dashboard.models.City.objects.all()
+    airports = dashboard.models.Airports.objects.all().order_by('name').values()
+    cities = dashboard.models.City.objects.all().order_by('name').values()
     # other = ''
     # if request.method == 'POST':
     #     userName = request.POST['userName']
