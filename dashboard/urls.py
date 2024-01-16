@@ -14,6 +14,7 @@ urlpatterns = [
     path('editRoute/<str:pk>/', views.EditRoute, name='editroute'),
     path('deleteRoute/<str:pk>/', views.DeleteRoute, name='deleteroute'),
 
+    #City Paths
 
     path('deleteCity/<str:pk>/', views.deleteCity, name='deleteCity'),
     path('deleteAirport/<str:pk>/', views.deleteAirport, name='deleteAirport'),
