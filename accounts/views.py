@@ -1,13 +1,36 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from . models import CustomUser, ExtendUser
+from . models import CustomUser, ExtendUser, AdminKey
 from . utils import SendOtp
 from datetime import datetime
 import pyotp
+import dashboard.views
 
 
 # Create your views here.
+
+def adminLogin(request, pk):
+    try:
+        if AdminKey.objects.get(key = pk):
+
+            if request.method == 'POST':
+                email = request.POST['email']
+                password = request.POST['password']
+
+                user = authenticate(request, email = email, password = password)
+
+                if user is not None:
+                    login(request, user)
+                    if request.user.is_superuser:
+                        return redirect('adminDashboard')
+                    else:
+                        return redirect('driverDash')
+                else:
+                    messages.error(request, "Check Your Credentials...")
+            return render(request, 'auth/userLogin.html')
+    except:
+        return dashboard.views.custom404
 
 # Fuction to Login the User Using Email and Password
 
@@ -31,8 +54,11 @@ def userLogin(request):
 # Function to Logout the User
 
 def userLogout(request):
-    logout(request)
-    return redirect('userLogin')
+    if request.user.is_superuser:
+        logout(request)
+        return redirect('home')
+    else:
+        return redirect('userLogin')
 
 # def adminLogin(request):
 #     return render(request, 'auth/adminlogin.html')

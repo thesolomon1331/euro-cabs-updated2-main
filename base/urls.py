@@ -24,11 +24,11 @@ from django.views.generic import RedirectView
 handler404 = 'dashboard.views.custom404'
 
 urlpatterns = [
-    path('', RedirectView.as_view(url = '/users/home', permanent = True)),
+    # path('', RedirectView.as_view(url = '/users/', permanent = True)),
     path('eurocabsadmin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('users/', include('users.urls')),
+    path('', include('users.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

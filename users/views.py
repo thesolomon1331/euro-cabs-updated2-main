@@ -209,7 +209,8 @@ def schools(request):
 
 
 # DRIVER PERSONAL DETAILS
-
+from django.contrib.auth.decorators import login_required
+@login_required
 def DriverForm(request):
     if 'username' in request.session:
         del request.session['username']
@@ -226,10 +227,11 @@ def DriverForm(request):
     context = {
         'form': form
     }
-    return render(request, 'user/driverRegister.html', context)
+    return render(request, 'user/driverupload.html', context)
 
 
 #Driver Dash
+@login_required
 def DriverDash(request):
     mes = ''
     data = get_object_or_404(DriverFiles, driver_id = request.user)

@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 #     path('/', views.adminDashborad, name='adminDashboard'),
     #Complaint Endpoint
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('privacyAndPolicy/', views.privacyAndPolicy, name='privacyPolicy'),
     path('rides/', views.rides, name='rides'),
     path('websiteTerms/', views.websiteTerms, name='websiteTerms'),

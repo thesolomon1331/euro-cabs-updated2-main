@@ -235,7 +235,6 @@ def cityManage(request, pk):
 
 
 # Custom View for 404(Page Not Found)
-
 def custom404(request, exception = None):
     return render(request, 'admin/404.html', status=404)
 
