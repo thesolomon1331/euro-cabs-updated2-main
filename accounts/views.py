@@ -54,11 +54,9 @@ def userLogin(request):
 # Function to Logout the User
 
 def userLogout(request):
-    if request.user.is_superuser:
-        logout(request)
-        return redirect('home')
-    else:
-        return redirect('userLogin')
+    logout(request)
+    return redirect('home')
+   
 
 # def adminLogin(request):
 #     return render(request, 'auth/adminlogin.html')
@@ -66,29 +64,27 @@ def userLogout(request):
 # Driver Register
 
 def DriverRegister(request):
-    print("Hello")
-    if request.method == 'POST':
-        email = request.POST['email']
-        phone = request.POST['phone-number']
-        phone_country_code = request.POST['phone-country-code']
-        password = request.POST['password1']
-
-        print("Hello Reached")
+    try:
+        if request.method == 'POST':
+            email = request.POST['email']
+            phone = request.POST['phone-number']
+            phone_country_code = request.POST['phone-country-code']
+            password = request.POST['password1']
 
      
-        data = CustomUser.objects.create_user(username=email, email=email, password=password, is_active = False)
+            data = CustomUser.objects.create_user(username=email, email=email, password=password, is_active = False)
    
          
         
-        form = ExtendUser(phone_number = phone, id_user = data, phone_code = phone_country_code)
-        form.save()
-        request.session['username'] = email
-        SendOtp(request, email)
-        return redirect('otpVerification')
+            form = ExtendUser(phone_number = phone, id_user = data, phone_code = phone_country_code)
+            form.save()
+            request.session['username'] = email
+            SendOtp(request, email)
+            return redirect('otpVerification')
         # else:
-            # messages.error(request, "Phone Number Should be Less than 15 digits")
-        # except:
-        #     messages.error(request, 'Email Already Exists')
+        #     messages.error(request, "Phone Number Should be Less than 15 digits")
+    except:
+        messages.error(request, 'Email Already Exists')
     
        
        

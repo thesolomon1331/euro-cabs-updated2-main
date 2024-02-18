@@ -341,8 +341,12 @@ def onGoing(request):
 @login_required(login_url='userLogin')
 def DriverFiles(request):
     data = users.models.DriverFiles.objects.filter(accept_flag = False)
+
+    drivers = users.models.DriverFiles.objects.filter(accept_flag = True)
+
     context = {
-        'data':data
+        'data':data,
+        'drivers':drivers
     }
     return render(request, 'admin/driverFiles.html', context)
 

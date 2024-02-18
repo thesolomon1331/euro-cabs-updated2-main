@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t^v$ow)l3mhl@8lrb(a2rn(ja&e(k+i5xtu%2sx!8^%a$7q(79'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'eurocabs-863b86618114.herokuapp.com', 'eurocabs.uk']
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'base.urls'
 
@@ -91,12 +91,12 @@ DATABASES = {
 }
 
 
-import dj_database_url
+# import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600,
-    conn_health_checks=True,
-)
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600,
+#     conn_health_checks=True,
+# )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -149,6 +149,13 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+
+AWS_ACCESS_KEY_ID = "AKIAW3MECD4S33IZJVFD"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_S3_REGION_NAME = "eu-west-2"
+AWS_STORAGE_BUCKET_NAME = "eurocabs"
 
 ## Email Settings 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
