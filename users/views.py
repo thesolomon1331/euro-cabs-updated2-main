@@ -209,7 +209,8 @@ def schools(request):
 
 
 # DRIVER PERSONAL DETAILS
-
+from django.contrib.auth.decorators import login_required
+@login_required
 def DriverForm(request):
     if 'username' in request.session:
         del request.session['username']
@@ -221,6 +222,7 @@ def DriverForm(request):
             obj.driver_id = request.user
             obj.all_files_flag = True
             obj.save()
+            return redirect('driverDash')
         else:
             messages.error(request, 'Something Went Wrong')
     context = {
@@ -230,17 +232,23 @@ def DriverForm(request):
 
 
 #Driver Dash
+@login_required
 def DriverDash(request):
     mes = ''
-    data = get_object_or_404(DriverFiles, driver_id = request.user)
-    if data.all_files_flag == True and data.accept_flag == True:
-        mes = "You Are Selected"
-    elif data.all_files_flag == True and data.accept_flag == False:
-        mes = "Application is in Process..."
-    else:
+    try:
+        data = get_object_or_404(DriverFiles, driver_id = request.user)
+        if data.all_files_flag == True and data.accept_flag == True:
+            mes = "ok"
+            print(mes)
+        elif data.all_files_flag == True and data.accept_flag == False:
+            mes = "no"
+            print(mes)
+        else:
+            return redirect('driverForm')
+    except:
         return redirect('driverForm')
 
-    return render(request, 'user/driverDash.html', {'data': mes})
+    return render(request, 'user/driverDashboard.html', {'data': mes})
 
 
 def CusReply(request, pk, rep):

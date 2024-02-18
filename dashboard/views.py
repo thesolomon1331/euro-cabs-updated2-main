@@ -235,7 +235,6 @@ def cityManage(request, pk):
 
 
 # Custom View for 404(Page Not Found)
-
 def custom404(request, exception = None):
     return render(request, 'admin/404.html', status=404)
 
@@ -342,8 +341,12 @@ def onGoing(request):
 @login_required(login_url='userLogin')
 def DriverFiles(request):
     data = users.models.DriverFiles.objects.filter(accept_flag = False)
+
+    drivers = users.models.DriverFiles.objects.filter(accept_flag = True)
+
     context = {
-        'data':data
+        'data':data,
+        'drivers':drivers
     }
     return render(request, 'admin/driverFiles.html', context)
 
